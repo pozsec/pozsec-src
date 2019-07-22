@@ -1,0 +1,33 @@
+language: python
+
+python:
+    - "3.7"
+
+before_install:
+  # This workaround is required to avoid libstdc++ errors while running "extended" hugo with SASS support.
+  - wget -q -O libstdc++6 http://security.ubuntu.com/ubuntu/pool/main/g/gcc-5/libstdc++6_5.4.0-6ubuntu1~16.04.10_amd64.deb
+  - sudo dpkg --force-all -i libstdc++6
+
+install:
+    # install latest release version
+    - wget $(wget -qO- https://api.github.com/repos/gohugoio/hugo/releases/latest | sed -r -n '/browser_download_url/{/Linux-64bit.deb/{s@[^:]*:[[:space:]]*"([^"]*)".*@\1@g;p}}')
+    # - wget -qO- https://api.github.com/repos/gohugoio/hugo/releases/latest | sed -r -n '/browser_download_url/{/Linux-64bit.deb/{s@[^:]*:[[:space:]]*"([^"]*)".*@\1@g;p}}' | head -n 1 | xargs wget
+    # - wget https://github.com/gohugoio/hugo/releases/download/v0.54.0/hugo_0.54.0_Linux-64bit.deb
+    - sudo dpkg -i --force-overwrite hugo*.deb
+    - sudo pip install Pygments
+    - sudo pip install git+https://github.com/TobalJackson/radare2-pygments-lexer.git
+    - rm -rf public 2> /dev/null
+
+script:
+    - hugo
+
+deploy:
+  local_dir: public # Default static site output dir for Hugo
+  repo: pozsec/pozsec.github.io # This is the slug of the repo you want to deploy your site to
+  target_branch: master # GitHub pages branch to deploy to (in other cases it can be gh-pages)
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN # This is the authentication which you will setup in the next step in travis-ci dashboard
+  name: "d0vine"
+  on:
+    branch: master
