@@ -1,4 +1,4 @@
-baseURL = "http://pozsec.github.io/"
+baseURL = "https://pozsec.github.io/"
 languageCode = "pl-pl"
 title = "Poznań Security Meetup"
 theme = "purehugo"
