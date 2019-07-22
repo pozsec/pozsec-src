@@ -17,13 +17,13 @@ install:
     - sudo dpkg -i --force-overwrite hugo*.deb
     - sudo pip install Pygments
     - sudo pip install git+https://github.com/TobalJackson/radare2-pygments-lexer.git
-    - rm -rf public 2> /dev/null
+    - rm -rf docs 2> /dev/null
 
 script:
     - hugo
 
 deploy:
-  local_dir: public # Default static site output dir for Hugo
+  local_dir: docs # Default static site output dir for Hugo
   repo: pozsec/pozsec.github.io # This is the slug of the repo you want to deploy your site to
   target_branch: master # GitHub pages branch to deploy to (in other cases it can be gh-pages)
   provider: pages
