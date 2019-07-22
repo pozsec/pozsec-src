@@ -1,7 +1,7 @@
 ---
 title: "PozSec.bind(('localhost',443))"
 date: 2019-07-17T22:14:05+02:00
-draft: true
+draft: false
 ---
 
 Cześć! Wbrew wszelkim pozorom nadal żyjemy i mamy się dobrze ;) Po dłuższym czasie doszliśmy do wniosku, że czas pojawić się również online. Tak oto zrodziła się ta blogostrona - trochę blog, trochę strona, trochę tablica ogłoszeń.

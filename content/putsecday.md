@@ -1,7 +1,7 @@
 ---
 title: "PUT Security Day"
 date: 2019-07-17T22:27:11+02:00
-draft: true
+draft: false
 ---
 
 ```
